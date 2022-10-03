@@ -1,0 +1,244 @@
+body {
+  font-family: Roboto;
+  font-size: 16px; /*good range for body copy is between 14-20px with 16px being the sweet spot */
+  line-height: 1.5;
+  color: #47353a;
+}
+
+header {
+  padding: 10px 15px; /*short hand where 10px is for top and bottom and 15px is for left and right */
+  overflow: hidden; /*when we use float in header they are taken outside the regular box flow of page, as a result our header collapses, in order to get our head to have the proper height we use overflow:hidden. basically when using float on a child element, put overflow:hidden on the parent */
+}
+
+header h1 {
+  float: left;
+}
+
+header nav {
+  float: right;
+  margin-top: 3px; /* aligns the nav to the logo because the logo height was larger by 3px causing it to mis-align */
+}
+
+header nav a {
+  color: #47353a;
+  text-decoration: none;
+  margin-left: 12px;
+  text-transform: uppercase; /*without changing html we can make transform lettes to upercase */
+  font-weight: 700; /*bold*/
+}
+
+.hero {
+  background-image: url(hero.jpg);
+  background-size: cover; /*takes up full width and height available */
+  padding-top: 230px;
+  padding-bottom: 200px;
+  background-position: right center; /* position background image to the x and y axis. right hand edge cen& centered vertically  */
+}
+
+.hero div {
+  max-width: 540px; /*shrink and grow with the page up until 540px, as well as ensure it's only 2 lines long and not 3 (on desktop) */
+
+  /*center div in the middle of page */
+  margin-left: auto;
+  margin-right: auto;
+
+  /*give some padding so when viewed on smaller screens it's not on the edge*/
+  padding-left: 20px;
+  padding-right: 20px;
+
+  text-align: center; /*centers text */
+}
+
+.hero h2 {
+  font-family: David Libre;
+  font-weight: 700; /*bold*/
+  font-size: 64px;
+  line-height: 1;
+  margin-bottom: 15px; /*gives space between h2 and paragraph below it */
+}
+
+.hero p {
+  max-width: 400px; /*to help balance the amount of text per line*/
+
+  /*center paragraph in the middle of page */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.flowers {
+  overflow: hidden;
+}
+.flowers img {
+  float: left;
+  width: 33.333%; /*by using % width our images will now be fluid in relation to the size of the container, thus having 3 images side by side */
+}
+
+.quotes {
+  overflow: hidden;
+}
+
+.quotes div {
+  width: 50%;
+  float: left;
+  text-align: center;
+  padding: 50px 20px 40px 20px;
+}
+
+.cream-background {
+  background-color: #f7f1ee;
+}
+
+.quotes img {
+  width: 100px; /* no need to use max-width because 75px is so small, you wont be viewing it on a screen smaller than 75px */
+  border-radius: 100%; /* makes a perfect circle */
+}
+
+.quotes blockquote {
+  font-family: David Libre;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.15;
+  max-width: 400px;
+  /* the text-align property we used won't work on elements like blockquotes, it only works on text and images, thus we use auto the margins on the left and right */
+  margin: 15px auto 5px auto;
+}
+
+.chair {
+  background-image: url(full-bleed.jpg);
+  background-position: center bottom; /* x axis is positioned at the center and the y axis is positioned at the bottom */
+  /* we were using padding in our hero class however we want a different padding to set the size so let's set it to zero and use height instead */
+  padding: 0;
+  height: 500px;
+}
+
+.logos {
+  background-color: #eeae9f;
+  padding: 20px 20px 35px 20px;
+  text-align: center;
+}
+
+.logos p {
+  color: #fff;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.logos img {
+  /* instead of just having margin left or margin right we have both to equally center it*/
+  margin-left: 22px;
+  margin-right: 22px;
+}
+
+footer {
+  background-color: #47353a;
+  padding: 25px 30px;
+  overflow: hidden;
+}
+
+footer img {
+  float: left;
+}
+
+footer p {
+  float: right;
+  font-size: 14px;
+  color: #ccc9ca;
+  font-weight: 700;
+}
+
+@media (min-width:820px) { /*applying styles to only desktop with min rather than max*/
+  
+  /*this keeps the header at the top as you scroll down the page */
+  header { 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 1px 5px 0px rgba(51,51,51,0.3); /*x axis, y axis, blur radius, spread (how far it pushes it out) and color */
+   
+  }
+  
+  .hero { /* this creates sempty space about our hero for the header to sit in */
+    margin-top:50px ;
+  }
+}
+
+@media (max-width: 820px) {
+  .logos img {
+    /*reducing gap between logos */
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+}
+
+@media (max-width: 680px) {
+  .logos img {
+    margin: 0 auto 35px auto; /*auto centers it */
+    display: block; /* stacks them on top of each other */
+  }
+
+  .logos img:last-child {
+    /*allows us to apply specific child to the last logo img */
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    font-size: 14px; /*16px can look a little large on smaller screens so 14px is a good reduction */
+  }
+
+  header nav {
+    line-height: 24px; /* this will keep our nav aligned with the h1 (logo) */
+  }
+  .hero h2 {
+    font-size: 32px;
+    margin-bottom: 5px;
+  }
+
+  .hero {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
+  .chair {
+    height: 320px;
+  }
+
+  .quotes div {
+    float: none; /*allows them to stack on top of one another */
+    width: auto; /*removing our 50% weight */
+    padding: 30px 30px 40px 30px; /*reduced our padding but kept the bottom a little larger otherwise eyes will play tricks on your and you'll think it's not centered */
+  }
+
+  .quotes blockquote {
+    font-size: 20px;
+  }
+
+  .quotes p {
+    display: none; /*hiding our paragraphs in our quotes section */
+  }
+}
+
+@media (max-width: 430px) {
+  header h1,
+  header nav {
+    float: none;
+  }
+
+  header nav a {
+    /*this will remove the margin on the left that was necessary when the nav a was on the right side of the screen, otherwise it wont align with the h1 logo */
+    margin-left: 0;
+    margin-right: 12px;
+  }
+
+  .flowers img {
+    float: none;
+    width: auto;
+  }
+
+  footer {
+    padding: 30px 20px;
+  }
+}
